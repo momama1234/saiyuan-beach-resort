@@ -20,7 +20,12 @@ const ReservationSuccessPage = async ({
     params: Promise<{ locale: string }>
 }): Promise<React.JSX.Element> => {
     const { locale } = await params
-    const propertyInfo = await getDataWithToken<PropertyInfo>(`/open/property-info?locale=${locale}`)
+    let propertyInfo: PropertyInfo | null = null
+    try {
+        propertyInfo = await getDataWithToken<PropertyInfo>(`/open/property-info?locale=${locale}`)
+    } catch {
+        // Use fallback values if property info fails to load
+    }
 
     return (
         <div id="reservations-success" className="size-full">

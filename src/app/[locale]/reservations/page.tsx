@@ -43,7 +43,12 @@ interface ReservationsPageProps {
 
 const ReservationsPage = async ({ searchParams, params }: ReservationsPageProps): Promise<React.JSX.Element> => {
     const { locale } = await params
-    const propertyInfo = await getDataWithToken<PropertyInfo>(OPEN_PROPERTY_INFO_API_PATH)
+    let propertyInfo: PropertyInfo | null = null
+    try {
+        propertyInfo = await getDataWithToken<PropertyInfo>(OPEN_PROPERTY_INFO_API_PATH)
+    } catch {
+        // Use fallback values if property info fails to load
+    }
     const rawParams = await searchParams
 
     const corrected = correctPastCheckIn(rawParams)
