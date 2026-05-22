@@ -25,6 +25,7 @@ import {
     useRoomAvailabilityActions,
     useSoldOutRoomClasses
 } from '@/features/reservation/stores/room-availability-store'
+import { usePendingBookingActions } from '@/features/reservation/stores/pending-booking-store'
 import { useRoomSelectionActions, useSelectedRooms, useSelectedRoomsByPlan } from '@/features/reservation/stores/room-selection-store'
 import { useCurrentStep, useStepNavigationActions } from '@/features/reservation/stores/step-navigation-store'
 import { buildReservationContextKey } from '@/features/reservation/utils/reservation-session'
@@ -189,6 +190,18 @@ const Reservations = ({
             return
         }
 
+        // Duplicate record — pending booking IDs already used, must restart from step 1
+        const isDuplicateRecord = errorMsg.includes('already exists') || errorMsg.includes('duplicate')
+        if (isDuplicateRecord) {
+            pendingBookingActions.clearPendingBooking()
+            stepNavigationActions.setCurrentStep(1)
+            setAlertErrorType('generic')
+            setAlertTitle('Session Expired')
+            setAlertMessage('Your booking session has expired. Please select your room again to continue.')
+            setAlertOpen(true)
+            return
+        }
+
         // Generic Next.js Server Action error in production — hide technical details
         const isNextjsGenericError =
             errorMsg.includes('Server Components render') ||
@@ -225,6 +238,7 @@ const Reservations = ({
     const { initialize } = useBookingDetailsActions()
     const currentStep = useCurrentStep()
     const stepNavigationActions = useStepNavigationActions()
+    const pendingBookingActions = usePendingBookingActions()
     const roomSelectionActions = useRoomSelectionActions()
     const roomClasses = useAvailableRoomClasses()
     const soldOutRoomClasses = useSoldOutRoomClasses()
