@@ -23,6 +23,7 @@ export function BookingDetails({
 }: BookingDetailsProps) {
     const displayName =
         [booking.guestFirstName, booking.guestLastName].filter(Boolean).join(' ') ||
+        booking.bookingCode ||
         `Booking #${booking.id}`
     const subtitle = [
         booking.checkInDate && booking.checkOutDate && `${booking.checkInDate} – ${booking.checkOutDate}`,
@@ -46,7 +47,7 @@ export function BookingDetails({
                 type="button"
                 onClick={onClick}
                 className={`w-full rounded-lg border border-gray-200 p-4 text-left transition hover:border-teal-200 hover:bg-orange-50/50 ${className}`}
-                aria-label={ariaLabel ?? `Select booking ${booking.id}`}
+                aria-label={ariaLabel ?? `Select booking ${booking.bookingCode ?? booking.id}`}
             >
                 {content}
             </button>

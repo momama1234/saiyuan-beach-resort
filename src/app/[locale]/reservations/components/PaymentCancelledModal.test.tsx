@@ -6,8 +6,8 @@ jest.mock('next-intl', () => {
     const messages: Record<string, string> = {
         title: 'Payment was not completed',
         description: 'Your booking is held — check your email for the payment link to try again.',
-        descriptionWithId:
-            'Your booking #{bookingId} is held — check your email for the payment link to try again.',
+        descriptionWithCode:
+            'Your booking {bookingCode} is held — check your email for the payment link to try again.',
         close: 'Close',
         resumePayment: 'Resume payment'
     }
@@ -34,7 +34,7 @@ describe('PaymentCancelledModal', () => {
         render(
             <PaymentCancelledModal
                 open={true}
-                bookingId={42}
+                bookingCode="SBR-AB2K3P7Q"
                 paymentUrl={null}
                 onResume={() => {}}
                 onClose={() => {}}
@@ -50,7 +50,7 @@ describe('PaymentCancelledModal', () => {
         render(
             <PaymentCancelledModal
                 open={true}
-                bookingId={42}
+                bookingCode="SBR-AB2K3P7Q"
                 paymentUrl={null}
                 onResume={() => {}}
                 onClose={() => {}}
@@ -64,7 +64,7 @@ describe('PaymentCancelledModal', () => {
         render(
             <PaymentCancelledModal
                 open={true}
-                bookingId={42}
+                bookingCode="SBR-AB2K3P7Q"
                 paymentUrl="https://checkout.stripe.com/x"
                 onResume={onResume}
                 onClose={() => {}}

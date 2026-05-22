@@ -15,7 +15,7 @@ import {
 
 interface PaymentCancelledModalProps {
     open: boolean
-    bookingId: number | null
+    bookingCode: string | null
     paymentUrl: string | null
     onResume: () => void
     onClose: () => void
@@ -23,7 +23,7 @@ interface PaymentCancelledModalProps {
 
 export function PaymentCancelledModal({
     open,
-    bookingId,
+    bookingCode,
     paymentUrl,
     onResume,
     onClose
@@ -41,7 +41,7 @@ export function PaymentCancelledModal({
                     <AlertTriangle className="h-12 w-12 text-amber-500" />
                     <DialogTitle>{t('title')}</DialogTitle>
                     <DialogDescription>
-                        {bookingId ? t('descriptionWithId', { bookingId }) : t('description')}
+                        {bookingCode ? t('descriptionWithCode', { bookingCode }) : t('description')}
                     </DialogDescription>
                 </DialogHeader>
                 <DialogFooter className="flex-row justify-end gap-2">

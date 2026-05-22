@@ -68,6 +68,7 @@ interface PaymentStatus {
 interface Booking {
     id: number
     bookingId: number
+    bookingCode?: string | null
     paymentId: number
     paymentStatus: string
     bookingStatus: BookingStatus
@@ -356,8 +357,10 @@ export default function ReservationSuccess({ bookingSteps, bookingBullets }: Res
                             {/* Booking Details */}
                             <div className="grid grid-cols-2 gap-4 text-sm">
                                 <div>
-                                    <p className="font-medium text-gray-600 uppercase">{t('bookingId')}</p>
-                                    <p className="text-lg font-semibold text-gray-800">#{booking?.id}</p>
+                                    <p className="font-medium text-gray-600 uppercase">{t('bookingCode')}</p>
+                                    <p className="text-lg font-semibold text-gray-800">
+                                        {booking?.bookingCode ?? `#${booking?.id}`}
+                                    </p>
                                 </div>
                                 <div>
                                     <p className="font-medium text-gray-600 uppercase">{t('amount')}</p>

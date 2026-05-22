@@ -1,5 +1,6 @@
 export interface PreCheckinBookingItem {
     id: number
+    bookingCode?: string | null
     guestFirstName?: string
     guestLastName?: string
     guestEmail?: string

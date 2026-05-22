@@ -21,7 +21,19 @@ describe('BookingDetails', () => {
         expect(screen.getByText('2025-01-10 – 2025-01-12 · Deluxe')).toBeInTheDocument()
     })
 
-    it('renders Booking #id when name is missing', () => {
+    it('renders bookingCode when name is missing', () => {
+        const bookingWithoutName: PreCheckinBookingItem = {
+            ...mockBooking,
+            bookingCode: 'SBR-AB2K3P7Q',
+            guestFirstName: undefined,
+            guestLastName: undefined
+        }
+        render(<BookingDetails booking={bookingWithoutName} />)
+
+        expect(screen.getByText('SBR-AB2K3P7Q')).toBeInTheDocument()
+    })
+
+    it('renders Booking #id when name and bookingCode are missing', () => {
         const bookingWithoutName: PreCheckinBookingItem = {
             ...mockBooking,
             guestFirstName: undefined,
@@ -36,13 +48,13 @@ describe('BookingDetails', () => {
         const handleClick = jest.fn()
         render(
             <BookingDetails
-                booking={mockBooking}
+                booking={{ ...mockBooking, bookingCode: 'SBR-AB2K3P7Q' }}
                 asButton
                 onClick={handleClick}
             />
         )
 
-        const button = screen.getByRole('button', { name: /select booking 1/i })
+        const button = screen.getByRole('button', { name: /select booking SBR-AB2K3P7Q/i })
         expect(button).toBeInTheDocument()
         fireEvent.click(button)
         expect(handleClick).toHaveBeenCalledTimes(1)

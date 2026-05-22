@@ -43,6 +43,7 @@ import { StepHeader } from './StepHeader'
 
 interface PaymentStatusResponse {
     paymentUrl: string | null
+    bookingCode?: string | null
 }
 
 interface ReservationsProps {
@@ -133,6 +134,7 @@ const Reservations = ({
     })()
     const [paymentCancelledModalDismissed, setPaymentCancelledModalDismissed] = useState(false)
     const [resumePaymentUrl, setResumePaymentUrl] = useState<string | null>(null)
+    const [cancelledBookingCode, setCancelledBookingCode] = useState<string | null>(null)
     const paymentCancelledModalOpen = cancelledBookingId !== null && !paymentCancelledModalDismissed
 
     useEffect(() => {
@@ -143,7 +145,10 @@ const Reservations = ({
                 const status = await getDataWithToken<PaymentStatusResponse>(
                     `/open/reservation/by-booking/${cancelledBookingId}/payment-status`
                 )
-                if (!cancelled) setResumePaymentUrl(status?.paymentUrl ?? null)
+                if (!cancelled) {
+                    setResumePaymentUrl(status?.paymentUrl ?? null)
+                    setCancelledBookingCode(status?.bookingCode ?? null)
+                }
             } catch {
                 if (!cancelled) setResumePaymentUrl(null)
             }
@@ -396,7 +401,7 @@ const Reservations = ({
 
             <PaymentCancelledModal
                 open={paymentCancelledModalOpen}
-                bookingId={cancelledBookingId}
+                bookingCode={cancelledBookingCode}
                 paymentUrl={resumePaymentUrl}
                 onResume={handleResumePayment}
                 onClose={handleClosePaymentCancelledModal}

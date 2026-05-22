@@ -467,6 +467,7 @@
     "viewBookingsButton": "View Bookings",
     "checkPayment": "Check Payment Status",
     "bookingId": "Booking ID",
+    "bookingCode": "Booking Reference",
     "amount": "Amount",
     "bookingStatus": "Booking Status",
     "paymentStatus": "Payment Status",
@@ -699,7 +700,7 @@
   "PaymentCancelled": {
     "title": "Payment was not completed",
     "description": "Your booking is held — check your email for the payment link to try again.",
-    "descriptionWithId": "Your booking #{bookingId} is held — check your email for the payment link to try again.",
+    "descriptionWithCode": "Your booking {bookingCode} is held — check your email for the payment link to try again.",
     "close": "Close",
     "resumePayment": "Resume payment"
   },
