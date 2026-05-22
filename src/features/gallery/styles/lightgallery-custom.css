@@ -1,0 +1,155 @@
+/* LightGallery Base Styles */
+@import 'lightgallery/css/lightgallery.css';
+@import 'lightgallery/css/lg-zoom.css';
+@import 'lightgallery/css/lg-thumbnail.css';
+@import 'lightgallery/css/lg-fullscreen.css';
+
+/* LightGallery Custom Overlay - Darker Background */
+.lg-backdrop {
+  background-color: rgba(0, 0, 0, 0.9) !important;
+}
+
+/* LightGallery Full Screen Images - No Black Borders (Desktop Only) */
+@media (min-width: 768px) {
+  /* Container setup */
+  .lg-outer {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .lg-item {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+
+  .lg-content {
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+
+  .lg-image-wrapper {
+    width: 100vw !important;
+    height: 100vh !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+  }
+
+  /* Image styling - use cover for initial display, but don't restrict zoom */
+  .lg-item img,
+  .lg-image {
+    object-fit: cover !important;
+    min-width: 100vw !important;
+    min-height: 100vh !important;
+  }
+
+  /* Enable zoom functionality */
+  .lg-zoomable {
+    cursor: zoom-in !important;
+  }
+
+  .lg-zoomed .lg-zoomable,
+  .lg-zoom-on .lg-zoomable {
+    cursor: grab !important;
+  }
+
+  .lg-zoomed .lg-zoomable:active,
+  .lg-zoom-on .lg-zoomable:active {
+    cursor: grabbing !important;
+  }
+}
+
+/* LightGallery Custom Chevron Arrows for Mobile */
+@media (max-width: 767px) {
+  .lg-prev,
+  .lg-next {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    border: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    opacity: 0.8 !important;
+    transition: all 0.2s ease !important;
+    position: absolute !important;
+    z-index: 1080 !important;
+    margin-top: 0 !important;
+    top: 50% !important;
+  }
+
+  .lg-prev {
+    left: 16px !important;
+    transform: translateY(-50%) !important;
+  }
+
+  .lg-next {
+    right: 16px !important;
+    transform: translateY(-50%) !important;
+  }
+
+  .lg-prev:hover,
+  .lg-next:hover {
+    background-color: transparent !important;
+    opacity: 1 !important;
+  }
+
+  .lg-prev:hover {
+    transform: translateY(-50%) scale(1.1) !important;
+  }
+
+  .lg-next:hover {
+    transform: translateY(-50%) scale(1.1) !important;
+  }
+
+  /* Hide ALL default LightGallery arrow icons and pseudo-elements */
+  .lg-prev .lg-icon,
+  .lg-next .lg-icon,
+  .lg-prev::after,
+  .lg-next::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  /* Custom Chevron Left Arrow - using ::before only */
+  .lg-prev::before {
+    content: '' !important;
+    display: block !important;
+    width: 12px !important;
+    height: 12px !important;
+    border-top: 2.5px solid white !important;
+    border-left: 2.5px solid white !important;
+    transform: rotate(-45deg) !important;
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    margin-left: -6px !important;
+    margin-top: -6px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Custom Chevron Right Arrow - using ::before only */
+  .lg-next::before {
+    content: '' !important;
+    display: block !important;
+    width: 12px !important;
+    height: 12px !important;
+    border-top: 2.5px solid white !important;
+    border-right: 2.5px solid white !important;
+    transform: rotate(45deg) !important;
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    margin-left: -6px !important;
+    margin-top: -6px !important;
+    box-sizing: border-box !important;
+  }
+}

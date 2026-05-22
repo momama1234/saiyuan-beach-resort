@@ -1,0 +1,2 @@
+export const MAX_RESERVATION_ADULTS = 60
+export const MAX_RESERVATION_CHILDREN = 20

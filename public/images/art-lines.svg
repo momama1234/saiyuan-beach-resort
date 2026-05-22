@@ -1,0 +1,16 @@
+<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="art-lines" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <!-- Flowing curved lines -->
+      <path d="M0,10 Q10,0 20,10 T40,10" stroke="#ffffff" stroke-width="0.5" fill="none" opacity="0.1"/>
+      <!-- Diagonal accent lines -->
+      <path d="M0,5 L20,15" stroke="#ffffff" stroke-width="0.3" opacity="0.05"/>
+      <!-- Additional curved pattern -->
+      <path d="M10,0 Q15,10 10,20" stroke="#ffffff" stroke-width="0.4" fill="none" opacity="0.08"/>
+      <!-- Subtle dots -->
+      <circle cx="5" cy="5" r="0.5" fill="#ffffff" opacity="0.03"/>
+      <circle cx="15" cy="15" r="0.5" fill="#ffffff" opacity="0.03"/>
+    </pattern>
+  </defs>
+  <rect width="100" height="100" fill="url(#art-lines)"/>
+</svg>

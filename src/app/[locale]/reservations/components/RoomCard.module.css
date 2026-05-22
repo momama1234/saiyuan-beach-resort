@@ -1,0 +1,25 @@
+.hideNumberInputSpinner {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.hideNumberInputSpinner::-webkit-inner-spin-button,
+.hideNumberInputSpinner::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+@keyframes promoPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 oklch(0.705 0.213 47.604 / 0);
+  }
+
+  40% {
+    box-shadow: 0 0 0 6px oklch(0.705 0.213 47.604 / 0.35);
+  }
+}
+
+.animatePromoPulse {
+  animation: promoPulse 1.2s ease-out 1;
+}
