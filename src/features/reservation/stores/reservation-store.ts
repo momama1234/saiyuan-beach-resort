@@ -1,13 +1,39 @@
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
-import { OPEN_RESERVATIONS_API_PATH } from '@/constants/path'
 import { CreateReservationResponse } from '@/features/reservation/types'
-import { postData } from '@/lib/api'
 
 import { BookingDetails } from './booking-details-store'
 import { GuestInfoState } from './guest-info-store'
 import { SelectedRoomPlanItem } from './room-selection-store'
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3010/v1'
+
+async function postReservation(data: object): Promise<CreateReservationResponse> {
+    const headers: Record<string, string> = { 'Content-Type': 'application/json' }
+    const apiKey = process.env.NEXT_PUBLIC_API_KEY
+    if (apiKey) headers['x-api-key'] = apiKey
+    const publicKey = process.env.NEXT_PUBLIC_API_PUBLIC_KEY
+    if (publicKey) headers['x-public-key'] = publicKey
+
+    const response = await fetch(`${API_URL}/open/reservations`, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(data),
+        cache: 'no-store'
+    })
+
+    if (!response.ok) {
+        let errorMessage = `Booking failed (${response.status})`
+        try {
+            const err = await response.json()
+            errorMessage = (Array.isArray(err.message) ? err.message[0] : err.message) || errorMessage
+        } catch { /* ignore parse error */ }
+        throw new Error(errorMessage)
+    }
+
+    return response.json()
+}
 
 export interface ReservationState {
     isSubmitting: boolean
@@ -130,10 +156,7 @@ export const useReservationStore = create<ReservationStore>()(
                             ...(locale ? { locale } : {})
                         }
 
-                        const response = await postData<CreateReservationResponse>(
-                            OPEN_RESERVATIONS_API_PATH,
-                            reservationData
-                        )
+                        const response = await postReservation(reservationData)
 
                         set(
                             {
