@@ -74,9 +74,31 @@ const Menu = React.memo(
 
                         <span className="flex shrink-0 items-center justify-center px-2 text-center md:w-auto md:px-4">
                             <Link href="/">
-                                <span className="font-cormorant text-xl font-semibold tracking-wide text-[#0E7C86]">
-                                    Saiyuan Beach Resort
-                                </span>
+                                <svg
+                                    viewBox="0 0 210 38"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    aria-label="Saiyuan Beach Resort"
+                                    className="h-[28px] w-auto"
+                                >
+                                    <text
+                                        x="105" y="22"
+                                        fontFamily="Georgia, 'Times New Roman', serif"
+                                        fontSize="20"
+                                        fill="#0E7C86"
+                                        fontStyle="italic"
+                                        textAnchor="middle"
+                                        letterSpacing="1"
+                                    >Saiyuan</text>
+                                    <line x1="18" y1="26" x2="192" y2="26" stroke="#0E7C86" strokeWidth="0.5" opacity="0.4" />
+                                    <text
+                                        x="105" y="36"
+                                        fontFamily="Georgia, 'Times New Roman', serif"
+                                        fontSize="8"
+                                        fill="#0E7C86"
+                                        letterSpacing="4"
+                                        textAnchor="middle"
+                                    >BEACH RESORT</text>
+                                </svg>
                             </Link>
                         </span>
                         <div

@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: SpecialOffersPageProps) {
         canonical: locale === 'en' ? '/special-offers' : `/${locale}/special-offers`,
         locale,
         alternateLocales: getAlternateLocales('/special-offers'),
-        image: '/images/special-offer.webp'
+        image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1920&q=85'
     })
 }
 
@@ -93,7 +93,7 @@ const SpecialOffersPage = async ({ params }: SpecialOffersPageProps): Promise<Re
                     alt="Saiyuan Beach Resort special offers"
                     className="h-[520px] w-full object-cover"
                     height={400}
-                    src="/images/special-offer.webp"
+                    src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1920&q=85"
                     width={1920}
                     priority
                 />

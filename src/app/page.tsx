@@ -14,13 +14,12 @@ import { PropertyInfo } from '@/types/property-info'
 
 // Fallback images if API fails
 const fallbackImages = [
-    '/images/home_page_bg.webp',
-    '/images/A5.webp',
-    '/images/OA1.webp',
-    '/images/OA2.webp',
-    '/images/OA3.webp',
-    '/images/OA4.webp',
-    '/images/OA5.webp'
+    'https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1920&q=85',
+    'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1920&q=85',
+    'https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1920&q=85',
+    'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920&q=85',
+    'https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=1920&q=85',
+    'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1920&q=85'
 ]
 
 // This page renders when the user is at the root path

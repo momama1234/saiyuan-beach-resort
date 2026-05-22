@@ -75,7 +75,7 @@ export default async function VideosPage({ params }: VideosPageProps): Promise<R
                     alt="Saiyuan Beach Resort videos"
                     className="h-full w-full object-cover"
                     height={560}
-                    src="/images/bg-gallery-03.jpg"
+                    src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1920&q=85"
                     width={1920}
                     priority
                 />

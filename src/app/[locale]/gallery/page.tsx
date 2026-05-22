@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: GalleryPageProps) {
         canonical: locale === 'en' ? '/gallery' : `/${locale}/gallery`,
         locale,
         alternateLocales: getAlternateLocales('/gallery'),
-        image: '/images/bg-gallery-03.jpg'
+        image: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1920&q=85'
     })
 }
 
@@ -94,7 +94,7 @@ const GalleryPage = async ({ params }: GalleryPageProps): Promise<React.JSX.Elem
             galleryItems = Array.isArray(itemsWithImages)
                 ? itemsWithImages
                       .filter((item): item is NonNullable<typeof item> => item !== null)
-                      .filter((item) => item.image !== '/images/bg-gallery-03.jpg')
+                      .filter((item) => item.image !== 'https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1920&q=85')
                       .sort((a, b) => {
                           const categoryA = activeCategories.find((cat) => cat.id === a.id)
                           const categoryB = activeCategories.find((cat) => cat.id === b.id)
@@ -116,7 +116,7 @@ const GalleryPage = async ({ params }: GalleryPageProps): Promise<React.JSX.Elem
                     alt="Saiyuan Beach Resort gallery"
                     className="h-[400px] w-full object-cover"
                     height={400}
-                    src="/images/bg-gallery-03.jpg"
+                    src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1920&q=85"
                     width={1920}
                     priority
                 />

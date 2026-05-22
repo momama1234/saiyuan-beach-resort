@@ -23,7 +23,7 @@ export default function ContactPage() {
     return (
         <>
             <SEOSchema schema={schemas} />
-            <PageTemplate images={['/images/Contact-Us-page.JPG']} showCarouselControls={false} scrollable={false}>
+            <PageTemplate images={['https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1920&q=85']} showCarouselControls={false} scrollable={false}>
                 <ContactPageClient />
             </PageTemplate>
         </>

@@ -9,18 +9,38 @@ interface LogoProps {
 }
 
 const Logo = ({ className, isNeedChangeColor }: LogoProps) => {
-    const textColor = isNeedChangeColor ? 'text-[#14302E]' : 'text-[#0E7C86]'
+    const color = isNeedChangeColor ? '#14302E' : '#ffffff'
 
     return (
-        <Link href="/" className={cn('hidden xl:flex items-center gap-3 absolute right-4 top-14 z-50', className)}>
-            <span
-                className={cn(
-                    'font-cormorant text-2xl font-semibold tracking-wide leading-tight',
-                    textColor
-                )}>
-                Saiyuan
-                <span className="block text-sm font-light tracking-widest uppercase opacity-80">Beach Resort</span>
-            </span>
+        <Link href="/" className={cn('hidden xl:flex items-center absolute right-5 top-12 z-50 drop-shadow-lg', className)}>
+            <svg
+                viewBox="0 0 210 78"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-label="Saiyuan Beach Resort"
+                style={{ color }}
+                className="w-[160px] h-auto"
+            >
+                <line x1="0" y1="1" x2="210" y2="1" stroke="currentColor" strokeWidth="0.6" opacity="0.5" />
+                <text
+                    x="105" y="42"
+                    fontFamily="Georgia, 'Times New Roman', serif"
+                    fontSize="32"
+                    fill="currentColor"
+                    fontStyle="italic"
+                    textAnchor="middle"
+                    letterSpacing="1"
+                >Saiyuan</text>
+                <line x1="18" y1="50" x2="192" y2="50" stroke="currentColor" strokeWidth="0.5" opacity="0.4" />
+                <text
+                    x="105" y="64"
+                    fontFamily="Georgia, 'Times New Roman', serif"
+                    fontSize="9.5"
+                    fill="currentColor"
+                    letterSpacing="5"
+                    textAnchor="middle"
+                >BEACH RESORT</text>
+                <line x1="0" y1="77" x2="210" y2="77" stroke="currentColor" strokeWidth="0.6" opacity="0.5" />
+            </svg>
         </Link>
     )
 }
