@@ -75,29 +75,22 @@ const Menu = React.memo(
                         <span className="flex shrink-0 items-center justify-center px-2 text-center md:w-auto md:px-4">
                             <Link href="/">
                                 <svg
-                                    viewBox="0 0 210 38"
+                                    viewBox="0 0 220 52"
                                     xmlns="http://www.w3.org/2000/svg"
                                     aria-label="Saiyuan Beach Resort"
-                                    className="h-[28px] w-auto"
+                                    className="h-[38px] w-auto"
                                 >
-                                    <text
-                                        x="105" y="22"
-                                        fontFamily="Georgia, 'Times New Roman', serif"
-                                        fontSize="20"
-                                        fill="#0E7C86"
-                                        fontStyle="italic"
-                                        textAnchor="middle"
-                                        letterSpacing="1"
-                                    >Saiyuan</text>
-                                    <line x1="18" y1="26" x2="192" y2="26" stroke="#0E7C86" strokeWidth="0.5" opacity="0.4" />
-                                    <text
-                                        x="105" y="36"
-                                        fontFamily="Georgia, 'Times New Roman', serif"
-                                        fontSize="8"
-                                        fill="#0E7C86"
-                                        letterSpacing="4"
-                                        textAnchor="middle"
-                                    >BEACH RESORT</text>
+                                    {/* Palm icon */}
+                                    <path d="M 18 44 C 17 36 16 28 15 20" stroke="#0E7C86" strokeWidth="2" fill="none" strokeLinecap="round"/>
+                                    <path d="M 15 20 C 13 13 14 7 17 4 C 17 11 16 17 15 20 Z" fill="#0E7C86"/>
+                                    <path d="M 15 20 C 8 14 2 10 0 5 C 5 11 11 17 15 20 Z" fill="#0E7C86"/>
+                                    <path d="M 15 20 C 22 13 28 9 31 4 C 26 10 20 17 15 20 Z" fill="#0E7C86"/>
+                                    <path d="M 15 20 C 7 19 1 22 -1 18 C 4 17 11 19 15 20 Z" fill="#0E7C86" opacity="0.8"/>
+                                    <path d="M 15 20 C 23 19 29 22 31 18 C 26 17 20 19 15 20 Z" fill="#0E7C86" opacity="0.8"/>
+                                    {/* SAIYUAN text */}
+                                    <text x="130" y="26" fontFamily="Georgia, 'Times New Roman', serif" fontSize="18" fill="#0E7C86" letterSpacing="7" textAnchor="middle" fontWeight="400">SAIYUAN</text>
+                                    <line x1="50" y1="30" x2="210" y2="30" stroke="#0E7C86" strokeWidth="0.5" opacity="0.4"/>
+                                    <text x="130" y="40" fontFamily="Georgia, 'Times New Roman', serif" fontSize="7" fill="#0E7C86" letterSpacing="4" textAnchor="middle" opacity="0.8">BEACH RESORT · KOH LIBONG</text>
                                 </svg>
                             </Link>
                         </span>
