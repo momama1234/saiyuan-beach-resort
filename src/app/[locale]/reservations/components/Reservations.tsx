@@ -18,6 +18,7 @@ import {
     AlertDialogTitle} from '@/components/ui/alert-dialog'
 import { useAutoSelectRatePlan } from '@/features/reservation/hooks/useAutoSelectRatePlan'
 import { useAutoSelectRoom } from '@/features/reservation/hooks/useAutoSelectRoom'
+import { usePendingBookingSessionReset } from '@/features/reservation/hooks/usePendingBookingSessionReset'
 import { useReservationSessionReset } from '@/features/reservation/hooks/useReservationSessionReset'
 import { BookingDetails, useBookingDetails, useBookingDetailsActions } from '@/features/reservation/stores/booking-details-store'
 import {
@@ -25,7 +26,6 @@ import {
     useRoomAvailabilityActions,
     useSoldOutRoomClasses
 } from '@/features/reservation/stores/room-availability-store'
-import { usePendingBookingActions } from '@/features/reservation/stores/pending-booking-store'
 import { useRoomSelectionActions, useSelectedRooms, useSelectedRoomsByPlan } from '@/features/reservation/stores/room-selection-store'
 import { useCurrentStep, useStepNavigationActions } from '@/features/reservation/stores/step-navigation-store'
 import { buildReservationContextKey } from '@/features/reservation/utils/reservation-session'
@@ -190,11 +190,10 @@ const Reservations = ({
             return
         }
 
-        // Duplicate record — pending booking IDs already used, must restart from step 1
+        // Duplicate record — pending booking IDs already used, cancel backend locks and restart
         const isDuplicateRecord = errorMsg.includes('already exists') || errorMsg.includes('duplicate')
         if (isDuplicateRecord) {
-            pendingBookingActions.clearPendingBooking()
-            stepNavigationActions.setCurrentStep(1)
+            void resetPendingBookingSession()
             setAlertErrorType('generic')
             setAlertTitle('Session Expired')
             setAlertMessage('Your booking session has expired. Please select your room again to continue.')
@@ -238,7 +237,7 @@ const Reservations = ({
     const { initialize } = useBookingDetailsActions()
     const currentStep = useCurrentStep()
     const stepNavigationActions = useStepNavigationActions()
-    const pendingBookingActions = usePendingBookingActions()
+    const { resetPendingBookingSession } = usePendingBookingSessionReset()
     const roomSelectionActions = useRoomSelectionActions()
     const roomClasses = useAvailableRoomClasses()
     const soldOutRoomClasses = useSoldOutRoomClasses()
