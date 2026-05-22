@@ -189,6 +189,19 @@ const Reservations = ({
             return
         }
 
+        // Generic Next.js Server Action error in production — hide technical details
+        const isNextjsGenericError =
+            errorMsg.includes('Server Components render') ||
+            errorMsg.includes('digest') ||
+            errorMsg.includes('specific message is omitted')
+        if (isNextjsGenericError) {
+            setAlertErrorType('generic')
+            setAlertTitle('Booking Error')
+            setAlertMessage('Unable to complete your booking. Please try again or contact us for assistance.')
+            setAlertOpen(true)
+            return
+        }
+
         setAlertErrorType('generic')
         let message = errorMsg
         let title = 'Error'

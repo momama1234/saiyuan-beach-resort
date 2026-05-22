@@ -187,8 +187,8 @@ export const useReservationNavigation = ({
                 // Clear pending booking after successful reservation
                 pendingBookingActions.clearPendingBooking()
             } catch (error) {
-                onReservationError?.(error instanceof Error ? error.message : 'Unknown error')
-                alert(error instanceof Error ? error.message : 'Unknown error')
+                const msg = error instanceof Error ? error.message : 'Unknown error'
+                onReservationError?.(msg)
             }
         }
     }
